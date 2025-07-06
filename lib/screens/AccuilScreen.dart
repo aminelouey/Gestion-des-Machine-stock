@@ -13,7 +13,7 @@ class Accueilscreen extends StatefulWidget {
 }
 
 class _AccueilscreenState extends State<Accueilscreen> {
-  final dbRef = FirebaseDatabase.instance.ref().child('0/machines');
+  final dbRef = FirebaseDatabase.instance.ref().child('donnees_machines/0/machines');
   
   int machineCount = 0;
 
@@ -125,7 +125,25 @@ class _AccueilscreenState extends State<Accueilscreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InfoCard(title: 'Machines', value: machineCount.toString()),
-                    const InfoCard(title: 'Pieces', value: '266'),
+                    FutureBuilder<DataSnapshot>(
+                      future: FirebaseDatabase.instance.ref().child('stock_pieces').get(),
+                      builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const InfoCard(title: 'Pieces', value: '...');
+                      }
+                      if (snapshot.hasData && snapshot.data!.exists) {
+                        final data = snapshot.data!.value;
+                        int piecesCount = 0;
+                        if (data is List) {
+                        piecesCount = data.length;
+                        } else if (data is Map) {
+                        piecesCount = data.length;
+                        }
+                        return InfoCard(title: 'Pieces', value: piecesCount.toString());
+                      }
+                      return const InfoCard(title: 'Pieces', value: '0');
+                      },
+                    ),
                     const InfoCard(title: 'Alertes', value: '2'),
                   ],
                 ),

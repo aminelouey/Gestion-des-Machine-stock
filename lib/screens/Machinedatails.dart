@@ -23,7 +23,7 @@ class _MachinedatailsState extends State<Machinedatails> {
   void fetchMachinePieces() async {
     try {
       final nomMachine = widget.machine['nom'];
-      final snapshot = await FirebaseDatabase.instance.ref().child('0/machines').get();
+      final snapshot = await FirebaseDatabase.instance.ref().child('donnees_machines/0/machines').get();
       if (snapshot.exists && snapshot.value is List) {
         final machines = List<Map<dynamic, dynamic>>.from(snapshot.value as List);
         final matchedMachine = machines.firstWhere(
