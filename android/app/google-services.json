@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622132549925",
+    "project_id": "gestion-des-machine",
+    "storage_bucket": "gestion-des-machine.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622132549925:android:ac7e1d5dfbd973f64ee2cc",
+        "android_client_info": {
+          "package_name": "com.example.gestion_pieces"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk8dG-JiMY_ngGM6Ez6_h8fcT6hlHZGXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
